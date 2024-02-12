@@ -1,0 +1,464 @@
+ifndef::baseDir[:baseDir: {docdir}/..]
+ifeval::["{baseDir}" == "/.."]
+:baseDir: ./..
+endif::[]
+ifndef::isInit[include::{baseDir}/_configuration.adoc[]]
+
+= Volet dimensionnement
+
+Les autres volets du dossier sont accessibles xref:liste-volets[d'ici].
+
+Cette section décrit le dimensionnement du projet.
+Le but est de déterminer la taille de l'infrastructure nécessaire au projet.
+
+toc::[]
+
+== Documentation de Référence
+
+.Références documentaires dimensionnement
+[cols="1e,1e,4e,4e"]
+|====
+|N°|Version|Titre/URL du document|Détail
+
+|1|1.2|Rapport_benchmark_xyz.pdf|
+|2|2019|Rapport INSEE sur les entreprises françaises|
+
+
+|====
+
+
+== Non statué
+
+=== Points soumis à étude complémentaire
+
+.Points soumis à étude complémentaire
+[cols="1e,1e,1e,2e,2e"]
+|====
+|ID| Détail |Statut |Porteur du sujet  | Échéance
+
+|1| Capacité disques SSD |EN_COURS | XYZ | 01/01/2022
+
+|====
+
+
+=== Hypothèses
+
+[TIP]
+====
+Donner ici les hypothèses structurantes prises pour le dimensionnement
+====
+
+====
+Exemple:
+
+.Hypothèses
+[cols="1e,4e"]
+|====
+|ID|Détail
+
+|1|Nous estimons que 10M de personnes téléchargeront l'application StopCovid
+
+|====
+
+====
+
+== Contraintes
+
+[TIP]
+====
+Les contraintes sont les limites applicables aux exigences sur le projet.
+
+Il est intéressant de les expliciter pour obtenir des exigences réalistes. Par exemple, il ne serait pas réaliste d'exiger des temps de réponse d'un web service incompatibles avec le débit du réseau sous-jacent.
+
+====
+
+
+=== Contraintes stockage
+
+TIP: Lister ici les éventuelles contraintes liées aux disques
+
+[Exemple]
+====
+Exemple : L'espace disque maximal allouable à une VM est de 2 To.
+====
+
+=== Contraintes CPU
+
+TIP: Lister ici les éventuelles contraintes liées à la puissance de calcul
+[Exemple]
+====
+Exemple 1 : Une VM sera dotée au maximum de 10 VCPU
+====
+
+====
+Exemple 2 : L'ensemble des pods de l'application ne devra pas demander plus de 1 CPU par node.
+====
+
+=== Contraintes mémoire
+
+TIP: Lister ici les éventuelles contraintes liées à la mémoire
+[Exemple]
+====
+Exemple : un pod ou un job Kubernetes ne devra pas utiliser plus de 6 Go de RAM
+====
+
+=== Contraintes réseau
+
+TIP: Lister ici les éventuelles contraintes de volume réseau utilisé
+[Exemple]
+====
+Exemple 1 : La latence minimale des requêtes sur le WAN entre Londres et Tokyo est de 250 ms
+====
+
+[Exemple]
+====
+Exemple 2 : Le réseau Ethernet du Datacenter dispose d'une bande passante de 40 Gbps.
+====
+
+== Exigences
+
+[TIP]
+====
+Il est crucial de récupérer un maximum d'informations issues de la production plutôt que des estimations car ces dernières se révèlent souvent loin de la réalité. C'est d'autant plus difficile s'il s'agit d'un nouveau projet. Prévoir alors une marge importante. Les informations données ici pourront serviront d'entrants au SLO (Objectif de Service fixé par les exploitants).
+====
+
+[TIP]
+====
+Les sections suivantes portant sur les calculs de volumétrie statiques et dynamiques donnent des exemples de calculs et d'élements à prendre en compte. Sur le plan de la forme, il peut être préférable de remplacer le texte par des feuilles de calculs dans un tableur. Pour un projet complexe ou aux hypothèses mouvantes, c'est indispensable.
+
+====
+
+=== Volumétrie statique
+
+TIP: Il s'agit des métriques permettant de déterminer le volume de stockage *cumulé* du projet. Penser à bien préciser les hypothèses prises pour les métriques estimées. Il sera ainsi possible de les revoir si de nouveaux éléments métier apparaissent.
+
+==== Métriques
+
+TIP: Il s'agit des données métier mesurées ou estimées qui serviront d'entrants au calcul des besoins techniques de stockage.
+
+[cols="e,e,e,e,e,e,e"]
+|====
+|Métrique|Description |Mesurée ou Estimée ? | Valeur | Augmentation annuelle prévisionnelle (%) |  Source| Détail/hypothèses
+
+|S1 |Nombre d'entreprises éligibles | Estimé |  4M | +1% |  INSEE [2]  | On considère que MIEL ne concerne pas les auto-entrepreneurs
+|S2 |Taille moyenne d'un PDF | Mesurée | 40Ko  | 0%| Exploitants |
+|====
+
+==== Estimation besoins de stockage
+
+[TIP]
+====
+Lister ici les besoins en stockage de chaque composant une fois l’application arrivée à pleine charge (volumétrie à deux ans par exemple).
+
+Prendre en compte :
+
+* La taille des bases de données.
+* La taille des fichiers produits.
+* La taille des files.
+* La taille des logs.
+* L'espace nécessaire dans un éventuel stockage objet (S3, Swift, Ceph…)
+*  …
+
+Ne pas prendre en compte :
+
+* Le volume lié à la sauvegarde : elle est gérée par les exploitants.
+* Le volume des binaires (OS, intergiciels…) qui est à considérer par les exploitants comme une volumétrie de base d'un serveur (le ticket d'entrée) et qui est de leur ressort.
+* Les données archivées qui ne sont donc plus en ligne.
+
+Fournir également une estimation de l'augmentation annuelle en % du volume pour permettre aux exploitants de commander ou réserver suffisamment de disque.
+
+Pour les calculs de volumétrie, penser à prendre en compte les spécificités de l'encodage (nombre d’octets par caractère, par date, par valeur numérique…).
+
+Pour une base de donnée, prévoir l'espace occupé par les index et qui est très spécifique à chaque application. Une (très piètre) estimation préliminaire est de doubler l'espace disque (à affiner ensuite).
+
+N'estimer que les données dont la taille est non négligeable (plusieurs Gio minimum).
+====
+
+====
+. Exemple de volumétrie statique du composant C :
+|====
+|Donnée|Description|Taille unitaire|Nombre d'éléments à 2 ans|Taille totale|Augmentation annuelle
+
+|Table Article
+|Les articles du catalogue
+|2Kio
+|100K
+|200 Mio
+|5 %
+
+|Table Commande
+|Les commandes clients
+|10Ko
+|3M
+|26.6 Gio
+|10 %
+
+|Logs
+|Les logs applicatifs (niveau INFO)
+|200 o
+|300M
+|56 Gio
+|0 % (archivage)
+|====
+====
+
+=== Volumétrie dynamique
+
+TIP: Il s'agit des métriques par durée (année, mois, heure…) et permettant de déterminer la charge appliquée sur l'architecture, ce qui aidera à dimensionner les systèmes en terme de CPU, bande passante et performances des disques.
+
+==== Métriques
+
+TIP: Ce sont les données métier mesurées ou estimées qui serviront d'entrants au calcul de la charge.
+
+[cols="e,e,e,e,e,e,e,e"]
+|====
+|Métrique|Description |Mesurée ou Estimée ? | Valeur | Augmentation annuelle prévisionnelle (%) | Saisonnalité|  Source| Détail/hypothèses
+
+|D1 |Proportion d'utilisateurs se connectant au service / J | Estimée | 1%  | +5%
+a|
+
+- Constant sur l'année
+- Constant sur la semaine
+- 3 pics à 20% de la journée à 8:00-9:00, 11:00-12:00 et 14:00-15:00
+| | Les utilisateurs sont des professionnels utilisant l'application depuis la France métropolitaine aux heures de bureau standards
+|====
+
+
+==== Estimation de la charge
+
+[TIP]
+====
+Il s'agit ici d'estimer le nombre d'appels aux composants et donc le débit cible (en TPS = Transactions par seconde) que devra absorber chacun d'entre eux. Un système bien dimensionné devra présenter des temps de réponse moyen du même ordre en charge nominale et en pic.
+
+Toujours estimer le "pic du pic", c'est à dire le moment où la charge sera maximale suite au cumul de tous les facteurs (par exemple pour un système de comptabilité : entre 14 et 15h  un jour de semaine de fin décembre).
+
+Ne pas considérer que la charge est constante mais prendre en compte :
+
+* Les variations journalières. Pour une application de gestion avec des utilisateurs travaillant sur des heures de bureau, on observe en général des pics du double de la charge moyenne à 8h-9h, 11h-12h et 14h-15h. Pour une application Internet grand public, ce sera plutôt en fin de soirée. Encore une fois, se baser sur des mesures d'applications similaires quand c'est possible plutôt que sur des estimations.
+* Les éléments de saisonnalité. La plupart des métiers en possèdent : Noël pour l'industrie du chocolat, le samedi soir pour les admissions aux urgences, juin pour les centrales de réservation de séjours etc. La charge peut alors doubler voire plus. Il ne faut donc pas négliger cette estimation.
+
+Si le calcul du pic pour un composant en bout de chaîne de liaison est complexe (par exemple, un service central du SI exposant des données référentiel et  appelé par de nombreux composants qui ont chacun leur pic), on tronçonnera la journée en intervalles de temps suffisamment fins (une heure par exemple) et on calculera sur chaque intervalle la somme mesurée ou estimée des appels de chaque appelant (batch ou transactionnel) pour ainsi déterminer la sollicitation cumulée la plus élevée.
+
+Si l'application tourne sur un cloud de type PaaS, la charge sera absorbée dynamiquement mais veiller à estimer le surcoût et à fixer des limites de consommation cohérentes pour respecter le budget tout en assurant un bon niveau de service.
+====
+
+.Exemple : estimation volumétrie dynamique de l'opération REST `GET Detail` de l'application MIEL
+|====
+|Taux maximal d’utilisateurs connectés en même temps en pic annuel | S1 x F1 x 0.2 = 8K /H
+|Durée moyenne d'une session utilisateur
+|15 mins
+|Nombre d'appel moyen du service par session
+|10
+|Charge (Transaction / seconde)
+|8K / 4 x 10 / 3600 =  5.5 Tps
+|====
+
+
+[TIP]
+====
+Pour un composant technique (comme une instance de base de donnée) en bout de chaîne et sollicité par de nombreux services, il convient d'estimer le nombre de requêtes en pic en cumulant les appels de tous les clients et de préciser le ratio lecture /écriture quand cette information est pertinente (elle est très importante pour une base de donnée).
+
+Le niveau de détail de l'estimation dépend de l'avancement de la conception de l’application et de la fiabilité des hypothèses.
+
+Dans l'exemple plus bas, nous avons déjà une idée du nombre de requêtes pour chaque opération. Dans d’autres cas, on devra se contenter d'une estimation très large sur le nombre de requêtes total à la base de données et un ratio lecture /écriture basée sur des abaques d'applications similaires. Inutile de détailler plus à ce stade.
+
+Enfin, garder en tête qu'il s'agit simplement d'estimation à valider lors de campagnes de performances puis en production. Prévoir un ajustement du dimensionnement peu après la MEP.
+====
+
+====
+Exemple : la base de donnée Oracle BD01 est utilisée en lecture par les appels REST `GET DetailArticle` fait depuis l'application end-user et en mise à jour par les appels POST et PUT sur `DetailArticle` issus du batch d'alimentation B03 la nuit entre 01:00 et 02:00.
+
+.Exemple estimations nombre de requêtes SQL en pic vers l'instance BD01 de 01:00 à 02:00 en décembre
+|====
+|Taux maximal d’utilisateurs connectés en même temps |0.5%
+|Nombre maximal d’utilisateurs connectés concurrents
+|5K
+|Durée moyenne d'une session utilisateur
+|15 mins
+|Nombre d'appel moyen du service `GET DetailArticle` par session
+|10
+|Charge usagers GET DetailArticle (Transaction / seconde)
+|(10/15) x 5K / 60 =  55 Tps
+|Nombre de requête en lecture et écriture par appel de service
+|2 et 0
+|Nombre d'appel journalier du service `POST DetailArticle` depuis le batch B03
+|4K
+|Nombre de requêtes INSERT et SELECT par appel de service
+|3 et 2
+|Nombre journalier d'articles modifiés par le batch B03
+|10K
+|Nombre de requêtes SELECT et UPDATE
+|1  et 3
+|Nombre de SELECT / sec
+|55x2 + 2 x 4K/3600 + 1 x 10K/3600=   115 Tps
+|Nombre de INSERT / sec
+|0 + 3 x 4K/3600 = 3.4 Tps
+|Nombre de UPDATE / sec
+|0 + 3 x 10K/3600 = 8.3 Tps
+|====
+====
+
+=== Exigences de temps de réponse
+
+==== Temps de Réponse des IHM
+
+[TIP]
+====
+Si les clients accèdent au système en WAN (Internet, VPN, LS …), préciser que les exigences de TR sont données hors transit réseau car il est impossible de s’engager sur la latence et le débit de ce type de client.
+
+Dans le cas d’accès LAN, il est préférable d’intégrer le temps réseau, d’autant que les outils de test de charge vont déjà le prendre en compte.
+
+Les objectifs de TR sont toujours donnés avec une tolérance statistique (90éme centile par exemple) car la réalité montre que le TR est très fluctuant car affecté par un grand nombre de facteurs.
+
+Inutile de multiplier les types de sollicitations (en fonction de la complexité de l’écran par exemple) car ce type de critère n’a plus grand sens aujourd'hui, particulièrement pour une application SPA).
+====
+====
+.Exemple de types de sollicitation :
+[cols='3e,1e,1e,1e']
+|====
+|Type de sollicitation|Bon niveau|Niveau moyen|Niveau insuffisant
+
+|Chargement d’une page
+|< 0,5 s
+|< 1 s
+|> 2 s
+
+|Opération métier
+|< 2 s
+|< 4 s
+|> 6 s
+
+|Édition, Export, Génération
+|< 3 s
+|< 6 s
+|> 15 s
+|====
+
+Exemple d'acceptabilité des TR :
+
+Le niveau de respect des exigences de temps de réponse est bon si :
+
+* Au moins 90 % des temps de réponse sont bons.
+* Au plus 2% des temps de réponse sont insuffisants.
+
+Acceptable si :
+
+* Au moins 80 % des temps de réponse sont bons.
+* Au plus 5 % des temps de réponse sont insuffisants.
+
+En dehors de ces valeurs, l’application devra être optimisée et repasser en recette puis être soumise à nouveau aux tests de charge.
+====
+
+==== Durée d’exécution des batchs
+
+[TIP]
+====
+Préciser ici dans quel intervalle de temps les traitements par lot doivent s’exécuter.
+====
+====
+Exemple 1 : La fin de l’exécution des batchs étant un pré-requis à l’ouverture aux usagers, ces premiers doivent impérativement se terminer avant la fin de la plage batch définie plus haut.
+====
+
+====
+Exemple 2 : le batch mensuel B1 de consolidation des comptes doit s’exécuter en moins de 4 J.
+====
+
+====
+Exemple 3 : les batchs et les IHM pouvant fonctionner en concurrence, il n’y a pas de contrainte stricte sur la durée d’exécution des batchs mais pour assurer une optimisation de l’infrastructure matérielle, on favorisera la nuit pendant laquelle les sollicitations IHM sont moins nombreuses.
+====
+
+
+== Dimensionnement cible
+
+[TIP]
+====
+Nous donnons un dimensionnement final devant supporter la volumétrie statique et dynamique et respecter les exigences.
+====
+
+=== Estimation des besoins en ressources par composant technique
+
+[TIP]
+====
+Donner ici RAM, disque et CPU par instance de composant technique déployé (à affiner après campagne de performance ou MEP).
+
+====
+====
+Exemple :
+
+.Estimation des besoins en ressources par composant technique
+[cols="2e,1e,1e,3e,2e"]
+|====
+| Unité déployable | Besoin en (V)CPU par instance| Besoin mémoire par instance (Mio) |  Périodes d'activité | Commentaires
+
+| `tomcat-batchs1`
+| <négligeable>
+| 1024
+| Toutes les heures, 24/7/365
+| Le serveur d'application reste démarré même en dehors de l'exécution des jobs
+
+| `spa`
+| <négligeable>
+| 50
+| 24/6, activité principale 8-17h Europe/Paris lun-ven
+|Appli Web SPA, s'exécute dans le navigateur
+
+| `bdd-postgresql`
+| 2
+| 2024
+| 24/7, activité principale 8-17h Europe/Paris lun-ven
+| Instance Postgresql
+|====
+====
+
+=== Dimensionnement des machines
+
+Voir le xref:{voletInfrastructureLink}#_déploiement_en_production[modèle de déploiement].
+
+[TIP]
+====
+
+Cette section fournit le dimensionnement final des machines nécessaires
+
+* Pour les VM, attention à vérifier qu'un VCPU = 1 cœur physique (et non un thread si hyperthreading activé)
+* Le disque interne concerne le disque nécessaire à l'OS et aux binaires. Pour une machine physique, il s'agit de stockage local (disques locaux SDD, NMVe ou HDD). Pour une VM, il peut s'agir d'un disque local sur la machine physique exécutant la VM ou d'un SAN.
+* Le disque distant concerne du stockage sur une baie de disque (SAN)
+* Le stockage externe hors SAN concerne du stockage fichier sur un filesystème distribué (NFS, CIFS, WebDav, …) ou un stockage objet (Swift, S3, …)
+====
+
+.Dimensionnement des machines
+[cols='1e,3e,1e,1e,1e,1e,1e']
+|====
+|Zone | Type de machine | Nb de machines | Nb (V)CPU  | Mémoire (Gio) | Disque interne (Gio) | Disque distant SAN (Gio)
+
+|Zone 01
+|VM serveur applicatif
+|3
+|2
+|4
+|100
+|0
+
+|Zone 02
+|Machine physique Base de données
+|1
+|2
+|6
+|50
+|1024
+
+|====
+
+.Dimensionnement du stockage externe hors SAN
+[cols='1e,3e,3e']
+|====
+|Nature|Taille (Gio)|Type(s) de machine utilisant ce partage
+
+|NFS (montage NAS)
+|248
+|Machine physique Base de données
+
+|OpenStack Object Storage ("Swift")
+|20
+|VM serveur applicatif
+
+|====

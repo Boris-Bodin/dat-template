@@ -1,0 +1,55 @@
+ifndef::baseDir[:baseDir: {docdir}/..]
+ifeval::["{baseDir}" == "/.."]
+:baseDir: ./..
+endif::[]
+ifndef::isInit[include::{baseDir}/_configuration.adoc[]]
+
+[appendix]
+= Best Practices Angular
+
+== Introduction
+
+This document show a few best practices with angular.
+
+== Generale Rules
+
+- Per file, the code must not exceed from 400 lines limit
+- Per function, the code must not exceed from 75 lines
+- If the values of the variables are intact, declare it with const
+- Names of properties and methods should be in lower camel case
+- We shouldn’t name our interfaces with the starting capital I letter as we do in some programming languages.
+- Breaking down Components : This might be an extension of the single responsibility principle not just to the code files or the methods, but to components as well.
+The larger the component is, the harder it becomes to debug, maintain and test.
+- Using Interfaces
+- Safe Navigation Operator (?) : To be on the safe side we should always use the safe navigation operator while accessing a property from an object in a component’s template.
+If the object is null and we try to access a property, we are going to get an exception.
+But if we use the save navigation (?) operator, the template will ignore the null value and will access the property once the object is not null anymore.
+- Prevent Memory Leaks in Angular Observable : Observable memory leaks are very common and found in every programming language, library, or framework.
+Angular is no exception to that.
+Observables in Angular are very useful as it streamlines your data, but memory leak is one of the very serious issues that might occur if you are not focused.
+It can create the worst situation in mid of development.
+Here’re some of the tips which follow to avoid leaks.
+* Using async pipe
+* Using take(1)
+* Using takeUntil()
+- Using index.ts : index.ts helps us to keep all related things together so that we don’t have to be bothered about the source file name.
+This helps reduce the size of the import statement.
+- Change Detection Optimisations :
+* Use NgIf and not CSS - If DOM elements aren’t visible, instead of hiding them with CSS, it's a good practice to remove them from the DOM by using *ngIf.
+* Move complex calculations into the ngDoCheck lifecycle hook to make your expressions faster.
+* Cache complex calculations as long as possible
+* Use the OnPush change detection strategy to tell Angular there have been no changes.
+This lets you skip the entire change detection step.
+- Build Reusable Components : If there is a piece of UI that you need in many places in your application, build a component out of it and use the component.
+This will save you a lot of trouble if, for some reason, the UI has to be changed.
+In that case, you do not go around changing the UI code in all the places.
+Instead, you can change the code in the component and that is it.
+- Using trackBy in NgFor : When using ngFor to loop over an array in templates, use it with a trackBy function which will return a unique identifier for each DOM item.
+When an array changes, Angular re-renders the whole DOM tree.
+But when you use trackBy, Angular will know which element has changed and will only make DOM changes only for that element.
+- Using Smart - Dumb components : This pattern helps to use OnPush change detection strategy to tell Angular there have been no changes in the dumb components.
+Smart components are used in manipulating data, calling the APIs, focussing more on functionalities, and managing states.
+While dumb components are all about cosmetics, they focus more on how they look.
+- Using strict types instead of "any" : While working on an Angular project, developers, generally end up typing ‘any’ to declare variables.
+If you are not specifying the variables and constants, they will be assumed by the value and as a result, will be assigned to it.
+If it happens, you are now in trouble as it will create some unintended issues, anytime.

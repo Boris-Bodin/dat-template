@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="733px" preserveAspectRatio="none" style="width:696px;height:733px;" version="1.1" viewBox="0 0 696 733" width="696px" zoomAndPan="magnify"><defs/><g><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="151" x="529" y="9.29">Diagramme de contexte système</text><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="115" x="565" y="21.29">Vue applicative générale</text><text fill="#888888" font-family="sans-serif" font-size="10" lengthAdjust="spacing" textLength="167" x="516" y="33.29">du projet Mes Infos En Ligne (MIEL)</text><text fill="#000000" font-family="sans-serif" font-size="18" lengthAdjust="spacing" textLength="206" x="238.5" y="52.7219">archi-applicative-generale</text><!--MD5=[0b1e1d5afbe222e194d3592c757a343c]
+cluster administration--><rect fill="#FFFFFF" height="107" style="stroke:#444444;stroke-width:1.0;stroke-dasharray:7.0,7.0;" width="216" x="474" y="465.5998"/><text fill="#444444" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="195" x="484.5" y="482.4639">Système administration B</text><text fill="#444444" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="52" x="556" y="497.9479">[System]</text><!--MD5=[3aaaa60f6cdac4d9080e986fddba613d]
+cluster si,--><rect fill="#FFFFFF" height="368" style="stroke:#444444;stroke-width:1.0;stroke-dasharray:7.0,7.0;" width="443" x="7" y="221.5998"/><text fill="#444444" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="171" x="143" y="238.4639">Système d'information</text><text fill="#444444" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="52" x="202.5" y="253.9479">[System]</text><!--MD5=[c3dd7293d4e74cc67bec6d68663a773e]
+entity p1--><rect fill="#1168BD" height="39.2" style="stroke:#3C7FC0;stroke-width:1.5;" width="183" x="490.5" y="517.5998"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="163" x="500.5" y="542.4639">Système comptabilité</text><!--MD5=[99c5416311fbf9d118be657efd773f39]
+entity ma--><rect fill="#1168BD" height="89.5998" style="stroke:#3C7FC0;stroke-width:1.5;" width="196" x="218" y="273.5998"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="38" x="297" y="298.4639">MIEL</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="318" y="315.8058"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="168" x="232" y="332.6057">Permet aux entreprises de</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="156" x="238" y="349.4057">récupérer leurs données</text><!--MD5=[2dc3847bc2cbbb4406fa09ddfca9c13d]
+entity ref1--><rect fill="#1168BD" height="72.7999" style="stroke:#3C7FC0;stroke-width:1.5;" width="167" x="23.5" y="500.5998"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="147" x="33.5" y="525.4639">REF_ENTREPRISE</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="109" y="542.8058"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="133" x="42.5" y="559.6057">Référentiel personne</text><!--MD5=[1d51138b063b4ea7af95f6dcbfdcef50]
+entity compo--><rect fill="#1168BD" height="72.7999" style="stroke:#3C7FC0;stroke-width:1.5;" width="208" x="226" y="500.5998"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="188" x="236" y="525.4639">Système de composition</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="332" y="542.8058"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="155" x="254.5" y="559.6057">Editique transactionnelle</text><!--MD5=[f38b7e6393ba0664c21da62e7868947a]
+entity entreprise--><rect fill="#686868" height="72.7999" style="stroke:#8A8A8A;stroke-width:1.5;" width="99" x="266.5" y="64.5998"/><text fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="79" x="276.5" y="89.4639">Entreprise</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="318" y="106.8058"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="69" x="283.5" y="123.6057">[Personne]</text><!--MD5=[f4ee72c7b9af3104173a10cb9df86362]
+link entreprise to ma--><path d="M316,137.6898 C316,172.9798 316,227.3798 316,267.1298 " fill="none" id="entreprise-to-ma" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="316,271.8598,320,262.8598,316,266.8598,312,262.8598,316,271.8598" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="112" x="317" y="182.5349">[1] Demande via</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="72" x="339" y="200.5351">formulaire</text><!--MD5=[14f500338939dcdcdcb5ccac8dc5b25b]
+link ma to ref1--><path d="M217.58,354.2998 C197.99,364.6298 178.89,377.5898 164,393.5998 C137.89,421.6798 123.12,463.2198 115.2,494.2098 " fill="none" id="ma-to-ref1" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="114.06,498.7998,120.1019,491.0219,115.2592,493.9458,112.3354,489.1031,114.06,498.7998" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="143" x="165" y="408.5349">[2.1] Enrichissement</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="96" x="188.5" y="426.5351">avec données</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="57" x="210" y="444.5352">internes</text><!--MD5=[d58216bb64e185028baf2cf880ba1aca]
+link ma to p1--><path d="M406.83,364.0298 C422.13,372.9998 437.43,382.9698 451,393.5998 C496.77,429.4498 540.5,481.9198 564.05,512.1798 " fill="none" id="ma-to-p1" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="567,515.9998,564.6631,506.4322,563.9432,512.0431,558.3323,511.3232,567,515.9998" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="128" x="510" y="408.5349">[2.2] Récupération</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="89" x="529.5" y="426.5351">informations</text><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="81" x="535.5" y="444.5352">comptables</text><!--MD5=[02057eea38557a28345d559cf8372f1d]
+link ma to compo--><path d="M318.87,363.9298 C321.33,402.0598 324.86,456.6598 327.28,494.0898 " fill="none" id="ma-to-compo" style="stroke:#666666;stroke-width:2.0;"/><polygon fill="#666666" points="327.59,498.8998,331.0159,489.666,327.2754,493.9097,323.0317,490.1693,327.59,498.8998" style="stroke:#666666;stroke-width:2.0;"/><text fill="#666666" font-family="sans-serif" font-size="15" font-weight="bold" lengthAdjust="spacing" textLength="116" x="326" y="426.5349">[3] Création PDF</text><rect fill="#DDDDDD" height="114.7996" rx="5" ry="5" style="stroke:#000000;stroke-width:1.0;" width="176" x="498" y="602.5998"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="0" x="560" y="622.6058"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="34" x="564" y="622.6058">Type</text><rect fill="#08427B" height="16.7999" style="stroke:none;stroke-width:1.0;" width="56" x="504" y="626.3998"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="528" y="639.4057"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="44" x="564" y="639.4057">person</text><rect fill="#686868" height="16.7999" style="stroke:none;stroke-width:1.0;" width="56" x="504" y="643.1997"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="528" y="656.2056"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="99" x="564" y="656.2056">external person</text><rect fill="#1168BD" height="16.7999" style="stroke:none;stroke-width:1.0;" width="56" x="504" y="659.9996"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="516" y="673.0056"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="45" x="564" y="673.0056">system</text><rect fill="#999999" height="16.7999" style="stroke:none;stroke-width:1.0;" width="56" x="504" y="676.7995"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="528" y="689.8055"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100" x="564" y="689.8055">external system</text><rect fill="#438DD5" height="16.7999" style="stroke:none;stroke-width:1.0;" width="56" x="504" y="693.5995"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="0" x="516" y="706.6054"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="59" x="564" y="706.6054">container</text><line style="stroke:#000000;stroke-width:1.0;" x1="504" x2="668" y1="609.5998" y2="609.5998"/><line style="stroke:#000000;stroke-width:1.0;" x1="504" x2="668" y1="626.3998" y2="626.3998"/><line style="stroke:#000000;stroke-width:1.0;" x1="504" x2="668" y1="643.1997" y2="643.1997"/><line style="stroke:#000000;stroke-width:1.0;" x1="504" x2="668" y1="659.9996" y2="659.9996"/><line style="stroke:#000000;stroke-width:1.0;" x1="504" x2="668" y1="676.7995" y2="676.7995"/><line style="stroke:#000000;stroke-width:1.0;" x1="504" x2="668" y1="693.5995" y2="693.5995"/><line style="stroke:#000000;stroke-width:1.0;" x1="504" x2="668" y1="710.3994" y2="710.3994"/><line style="stroke:#000000;stroke-width:1.0;" x1="504" x2="504" y1="609.5998" y2="710.3994"/><line style="stroke:#000000;stroke-width:1.0;" x1="560" x2="560" y1="609.5998" y2="710.3994"/><line style="stroke:#000000;stroke-width:1.0;" x1="668" x2="668" y1="609.5998" y2="710.3994"/><!--MD5=[1e756ed96682d27061739135903b1e30]
+@startuml
+!include C4/C4_Container.puml
+title  archi-applicative-generale
+header Diagramme de contexte système \nVue applicative générale \ndu projet Mes Infos En Ligne (MIEL)
+LAYOUT_WITH_LEGEND()
+Person_Ext(entreprise, "Entreprise","[Personne]")
+
+System_Boundary(administration, "Système administration B") {
+    System(p1, "Système comptabilité")        
+}
+
+System_Boundary(si, "Système d'information"),{
+  System(ma, "MIEL","Permet aux entreprises de récupérer leurs données")
+  System(ref1, "REF_ENTREPRISE","Référentiel personne")
+  System(compo, "Système de composition","Editique transactionnelle"){        
+}
+
+Rel(entreprise, ma, "[1] Demande via formulaire")
+Rel(ma, ref1, "[2.1] Enrichissement avec données internes")
+Rel(ma, p1, "[2.2] Récupération informations comptables")
+Rel(ma, compo, "[3] Création PDF")
+
+@enduml
+
+@startuml
+
+
+
+
+
+skinparam defaultTextAlignment center
+
+skinparam wrapWidth 200
+skinparam maxMessageSize 150
+
+skinparam rectangle {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam database {
+    StereotypeFontSize 12
+    shadowing false
+}
+
+skinparam Arrow {
+    Color #666666
+    FontColor #666666
+    FontSize 14
+    Thickness 2
+}
+
+skinparam rectangle<<zone>> {
+    Shadowing false
+    StereotypeFontSize 0
+    FontColor #444444
+    BorderColor #444444
+    BorderStyle dashed
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #08427B
+    BorderColor #073B6F
+}
+
+skinparam rectangle<<external_person>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #686868
+    BorderColor #8A8A8A
+}
+
+skinparam rectangle<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam rectangle<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+skinparam database<<system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #1168BD
+    BorderColor #3C7FC0
+}
+
+skinparam database<<external_system>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #999999
+    BorderColor #8A8A8A
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+skinparam rectangle<<unité déployable>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
+skinparam database<<unité déployable>> {
+    StereotypeFontColor #FFFFFF
+    FontColor #FFFFFF
+    BackgroundColor #438DD5
+    BorderColor #3C7FC0
+}
+
+
+
+
+
+
+
+title  archi-applicative-generale
+header Diagramme de contexte système \nVue applicative générale \ndu projet Mes Infos En Ligne (MIEL)
+hide stereotype
+legend right
+|=              |= Type |
+|<#08427B>      | person |
+|<#686868>      | external person |
+|<#1168BD>   | system |
+|<#999999>      | external system |
+|<#438DD5>   | container |
+endlegend
+rectangle "==Entreprise\n\n [Personne]" <<external_person>> as entreprise
+
+rectangle "==Système administration B\n<size:12>[System]</size>" <<zone>> as administration {
+    rectangle "==Système comptabilité" <<system>> as p1        
+}
+
+rectangle "==Système d'information\n<size:12>[System]</size>" <<zone>> as si,{
+  rectangle "==MIEL\n\n Permet aux entreprises de récupérer leurs données" <<system>> as ma
+  rectangle "==REF_ENTREPRISE\n\n Référentiel personne" <<system>> as ref1
+  rectangle "==Système de composition\n\n Editique transactionnelle" <<system>> as compo{        
+}
+
+entreprise - -> ma : "===[1] Demande via formulaire"
+ma - -> ref1 : "===[2.1] Enrichissement avec données internes"
+ma - -> p1 : "===[2.2] Récupération informations comptables"
+ma - -> compo : "===[3] Création PDF"
+
+@enduml
+
+PlantUML version 1.2021.00(Sun Jan 10 11:25:05 CET 2021)
+(MIT source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: fr
+Country: FR
+--></g></svg>

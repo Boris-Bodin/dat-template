@@ -1,0 +1,33 @@
+ifndef::isInit[]
+
+:icons: font
+:lang: fr
+:sectnumlevels: 4
+:toclevels: 2
+:sectnums: 4
+:toc: macro
+:toc-title: Sommaire
+:appendix-caption: Annexe
+
+:isInit: true
+
+ifndef::baseDir[:baseDir: {docdir}]
+:annexesDir: {baseDir}/annexes
+:chapitresDir: {baseDir}/chapters
+:resourcesDir: {baseDir}/resources
+
+:listeVoletsLink: {baseDir}/README.adoc
+
+:voletApplicativeLink: {chapitresdir}/volet-architecture-applicative.adoc
+:voletDeveloppementLink: {chapitresdir}/volet-architecture-developpement.adoc
+:voletInfrastructureLink: {chapitresdir}/volet-architecture-infrastructure.adoc
+:voletDimensionnementLink: {chapitresdir}/volet-architecture-dimensionnement.adoc
+:voletSecuriteLink: {chapitresdir}/volet-architecture-securite.adoc
+
+:glossaireLink: {baseDir}/glossaire.adoc
+
+:annexesALink: {annexesdir}/A-clean-code.adoc
+:annexesBLink: {annexesdir}/B-tdd.adoc
+:annexesCLink: {annexesdir}/C-best-pratices-angular.adoc
+
+endif::[]

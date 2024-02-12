@@ -1,0 +1,32 @@
+ifndef::baseDir[:baseDir: {docdir}]
+ifeval::["{baseDir}" == ""]
+:baseDir: .
+endif::[]
+ifndef::isInit[include::{baseDir}/_configuration.adoc[]]
+
+:doctitle: Dossier d'architecture
+
+Dernière modification : {docdate}
+
+*Etat* : _En cours_
+
+Ce dossier est constitué :
+
+* d’un xref:{voletApplicativeLink}[volet applicatif] présentant le contexte général et l’architecture applicative ;
+* d’un xref:{voletDeveloppementLink}[volet développement] présentant l’architecture logicielle ;
+* d’un xref:{voletInfrastructureLink}[volet infrastructure] présentant les aspects d’architecture techniques ou physiques ;
+* d’un xref:{voletDimensionnementLink}[volet dimensionnement] présentant les aspects liés aux performances et aux sollicitations ;
+* d’un xref:{voletSecuriteLink}[volet sécurité].
+
+Chaque volet expose les contraintes, exigences puis solutions mises en œuvre.
+
+Le glossaire du projet est disponible xref:{glossaireLink}[ici].
+
+[TIP]
+====
+À lire en priorité en fonction de votre rôle :
+
+image:{resourcesDir}/metiers.png[à lire en priorité]
+====
+
+Ce dossier d'architecture a été réalisé à partir de https://github.com/bflorat/modele-da[ce modèle].

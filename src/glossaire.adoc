@@ -1,0 +1,18 @@
+ifndef::baseDir[:baseDir: {docdir}]
+ifeval::["{baseDir}" == ""]
+:baseDir: .
+endif::[]
+ifndef::isInit[include::{baseDir}/_configuration.adoc[]]
+
+[glosary]
+= Glossaire des termes utilisés
+
+WARNING: Merci de respecter l'ordre alphabétique lors des éditions du document
+
+[cols="1,4,4"]
+|=======================================================================
+|Terme |Signification | Commentaire
+|Bibliothèque|Un ensemble de fonctions utilitaires, regroupées et mises à disposition afin de pouvoir être utilisées sans avoir à les réécrire.|
+
+|=======================================================================
+

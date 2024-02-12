@@ -1,0 +1,48 @@
+ifndef::baseDir[]
+:baseDir: {docdir}
+ifeval::["{baseDir}" == ""]
+:baseDir: .
+endif::[]
+ifndef::isInit[include::{baseDir}/_configuration.adoc[]]
+
+= Document d'architecture technique
+:toc:
+:doctitle: Document d'architecture technique
+:toclevels: 3
+:listeVoletsLink: liste-volets
+
+:voletApplicativeLink: volet-applicative
+:voletDeveloppementLink: volet-developpement
+:voletInfrastructureLink: volet-infrastructure
+:voletDimensionnementLink: volet-dimensionnement
+:voletSecuriteLink: volet-securite
+
+:glossaireLink: glossaire
+
+:annexesALink: annexe-A
+:annexesBLink: annexe-B
+:annexesCLink: annexe-C
+
+[#liste-volets]
+include::{baseDir}/README.adoc[]
+
+[#volet-applicative]
+include::{chapitresdir}/volet-architecture-applicative.adoc[leveloffset=+1]
+[#volet-developpement]
+include::{chapitresdir}/volet-architecture-developpement.adoc[leveloffset=+1]
+[#volet-infrastructure]
+include::{chapitresdir}/volet-architecture-infrastructure.adoc[leveloffset=+1]
+[#volet-dimensionnement]
+include::{chapitresdir}/volet-architecture-dimensionnement.adoc[leveloffset=+1]
+[#volet-securite]
+include::{chapitresdir}/volet-architecture-securite.adoc[leveloffset=+1]
+
+[#glossaire]
+include::{baseDir}/glossaire.adoc[leveloffset=+1]
+
+[#annexe-A]
+include::{annexesdir}/A-clean-code.adoc[leveloffset=+1]
+[#annexe-B]
+include::{annexesdir}/B-tdd.adoc[leveloffset=+1]
+[#annexe-C]
+include::{annexesdir}/C-best-pratices-angular.adoc[leveloffset=+1]
