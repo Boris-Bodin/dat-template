@@ -17,8 +17,8 @@ jobs:
 
       - name: Reduce readme
         run: |
-          asciidoctor-reducer -o src/DAT.adoc src/DAT-web.adoc
-          asciidoctor-reducer -o src/DAT.adoc src/DAT.adoc
+          asciidoctor-reducer -o DAT.adoc DAT-web.adoc
+          asciidoctor-reducer -o DAT.adoc DAT.adoc
 
       - name: Commit readme
         uses: EndBug/add-and-commit@v8
