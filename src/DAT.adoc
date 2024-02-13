@@ -72,7 +72,7 @@ Le glossaire du projet est disponible xref:{glossaireLink}[ici].
 ====
 À lire en priorité en fonction de votre rôle :
 
-image:{resourcesDir}/metiers.png[à lire en priorité]
+image::{resourcesDir}/metiers.png[à lire en priorité]
 ====
 
 Ce dossier d'architecture a été réalisé à partir de https://github.com/bflorat/modele-da[ce modèle].
@@ -331,7 +331,7 @@ Exemple 2 : MesInfosEnLigne est constituée de plusieurs microservices indépend
 Exemple 3 : Suite à la dérogation du DSI le 03 aout 20xx, l'IHM sera en architecture SPA (Single Page Application)
 ====
 
-image:{resourcesDir}/archi-applicative-generale.svg[Diagramme architecture applicative générale]
+image::{resourcesDir}/archi-applicative-generale.svg[Diagramme architecture applicative générale]
 
 === Architecture applicative détaillée
 
@@ -371,7 +371,7 @@ Exposer les modules applicatifs dans leurs différentes zones ou domaines.
 Exemple: module X, Y et Z dans le domaine GED. Modules A, B dans le domaine PERSONNE.
 ====
 
-image:{resourcesDir}/archi-applicative-detaillee-statique.svg[Diagramme d'Architecture applicative détaillée (vue statique)]
+image::{resourcesDir}/archi-applicative-detaillee-statique.svg[Diagramme d'Architecture applicative détaillée (vue statique)]
 
 ==== Vision dynamique
 
@@ -387,7 +387,7 @@ Il est possible également de détailler les chaînes de liaison par fonctionnai
 ====
 Exemple:
 
-image:{resourcesDir}/archi-applicative-detaillee-dynamique.svg[Diagramme architecture applicative détaillée (vue dynamique)]
+image::{resourcesDir}/archi-applicative-detaillee-dynamique.svg[Diagramme architecture applicative détaillée (vue dynamique)]
 
 ====
 
@@ -2080,7 +2080,7 @@ Identifier clairement le matériel dédié à l’application (et éventuellemen
 ====
 Exemple :
 
-image:{resourcesDir}/archi-infra.svg[Diagramme de déploiement MIEL]
+image::{resourcesDir}/archi-infra.svg[Diagramme de déploiement MIEL]
 ====
 
 === Versions des composants d'infrastructure
@@ -3515,7 +3515,7 @@ Pour simplifier la gestion des habilitations par factorisation, on peut :
 
 Exemple de modèle classique de gestion des habilitations :
 
-image:{resourcesDir}/roles.svg[Gestion classique des rôles]
+image::{resourcesDir}/roles.svg[Gestion classique des rôles]
 
 Penser à spécifier les éventuels pseudo-utilisateurs et leurs rôles comme :
 

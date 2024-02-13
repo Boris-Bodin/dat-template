@@ -373,7 +373,7 @@ Pour simplifier la gestion des habilitations par factorisation, on peut :
 
 Exemple de modèle classique de gestion des habilitations :
 
-image:{resourcesDir}/roles.svg[Gestion classique des rôles]
+image::{resourcesDir}/roles.svg[Gestion classique des rôles]
 
 Penser à spécifier les éventuels pseudo-utilisateurs et leurs rôles comme :
 
