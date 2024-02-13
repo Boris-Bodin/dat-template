@@ -2,7 +2,7 @@ name: Build DAT
 
 on:
   push:
-    paths:
+    branches:
       - main
 
 jobs:

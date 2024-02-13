@@ -10,7 +10,7 @@ This repository contains a Document d'Architecture Technique (DAT) structured in
 
 The repository provides multiple entry points for accessing the DAT:
 
-1. [`README.adoc`](./src/README.adoc): This is the main entry point for web browsing. It provides a comprehensive overview of the DAT and links to the individual chapters.
+1. [`README.adoc`](./src/README.adoc): This is the main entry point for web browsing. It provides a comprehensive overview of the DAT and links to the individual chapters. (only work on gitlab, or IDE with asciidoc reader)
 
 2. [`DAT-web.adoc`](./src/DAT-web.adoc): This file includes all the chapters for online reading. (only work on gitlab, or IDE with asciidoc reader)
 
