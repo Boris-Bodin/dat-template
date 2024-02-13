@@ -8,11 +8,13 @@ This repository contains a Document d'Architecture Technique (DAT) structured in
 4. Volet Dimensionnement
 5. Volet Sécurité
 
-The repository provides two entry points for accessing the DAT:
+The repository provides multiple entry points for accessing the DAT:
 
-1. `README.adoc`: This is the main entry point for web browsing. It provides a comprehensive overview of the DAT and links to the individual chapters.
+1. [`README.adoc`](./src/README.adoc): This is the main entry point for web browsing. It provides a comprehensive overview of the DAT and links to the individual chapters.
 
-2. `DAT.adoc`: This file is used to generate a PDF version of the DAT. It includes all the chapters and can be converted to PDF for offline reading or printing.
+2. [`DAT-web.adoc`](./src/DAT-web.adoc): This file includes all the chapters for online reading. (only work on gitlab, or IDE with asciidoc reader)
+
+2. [`DAT.adoc`](./src/DAT.adoc): This file is used to generate a PDF version of the DAT. It includes all the chapters and can be converted to PDF for offline reading or printing.
 
 To generate the PDF, you will need to have AsciiDoc installed on your system. Once installed, you can generate the PDF using the following command:
 
@@ -22,4 +24,4 @@ asciidoctor-pdf src/DAT.adoc
 
 This will create a `DAT.pdf` file in the same directory.
 
-For more information on each chapter, please refer to the respective `.adoc` files in the `src` directory.
+For more information on each chapter, please refer to the respective `.adoc` files in the `src/chapters` directory.
